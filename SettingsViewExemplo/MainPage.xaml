@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:SettingsViewExemplo" 
+             xmlns:sv="clr-namespace:AiForms.Renderers;assembly=SettingsView"
+             x:Class="SettingsViewExemplo.MainPage">
+    
+   <sv:SettingsView HasUnevenRows="true">
+    
+    <sv:Section Title="Header1" FooterText="Footer1">
+        <sv:CommandCell IconSize="60,60" IconRadius="30"
+            Title="Uma Tela de Configs Personalizada" Description="Olha como fica legal"
+            KeepSelectedUntilBack="true"            
+        />
+        <sv:ButtonCell Title="Toggle Section"
+             TitleAlignment="Center"  />
+        <sv:LabelCell Title="Label" ValueText="value" />
+        <sv:SwitchCell Title="Switch" On="true" 
+            Description="This is description." />
+        <sv:CheckboxCell Title="Checkbox" Checked="true" />
+    </sv:Section>
+
+    <sv:Section Title="Header2" FooterText="Footer2" IsVisible="{Binding InputSectionVisible}">
+        <sv:PickerCell Title="Favorites" ItemsSource="{Binding ItemsSource}" DisplayMember="Name" MaxSelectedNumber="3" 
+        SelectedItems="{Binding SelectedItems}" KeepSelectedUntilBack="true" PageTitle="select 3 items" />
+        <sv:NumberPickerCell Title="NumberPicker" Min="0" Max="99" Number="15" PickerTitle="Select number" />
+        <sv:TimePickerCell Title="TimePicker" Format="HH:mm" Time="15:30" PickerTitle="Select time" />
+        <sv:DatePickerCell Title="DatePicker" Format="yyyy/MM/dd (ddd)" Date="2017/11/11" MinimumDate="2015/1/1" MaximumDate="2018/12/15" TodayText="Today's date"/>
+        <sv:EntryCell Title="EntryCell" ValueText="{Binding InputText}" Placeholder="Input text" Keyboard="Email" TextAlignment="End" HintText="{Binding InputError}" />
+    </sv:Section>
+    
+</sv:SettingsView>
+</ContentPage>
